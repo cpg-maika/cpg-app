@@ -22,7 +22,7 @@ jobs:
             cd /opt/gsai/cpg-app
             git pull origin main
             docker build -t cpg-app:latest .
-            if [ "$(docker ps -a -q -f name=^/$cpg-app-container$)" ]; then
+            if [ "$(docker ps -a -q -f name=^/${cpg-app-container}$)" ]; then
               docker stop cpg-app-container || true
               docker rm cpg-app-container || true
               docker run -d --name cpg-app-container -p 8080:80 cpg-app:latest
